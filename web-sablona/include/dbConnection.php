@@ -2,13 +2,13 @@
 
 class Database
 {
-    private string $host;
-    private string $dbName;
-    private string $username;
-    private string $password;
-    public mysqli $conn;
+    private $host;
+    private $dbName;
+    private $username;
+    private $password;
+    public $conn;
 
-    public function __construct(string $host, string $dbName, string $username, string $password)
+    public function __construct($host, $dbName, $username, $password)
     {
         $this->host = $host;
         $this->dbName = $dbName;
@@ -16,7 +16,7 @@ class Database
         $this->password = $password;
     }
 
-    public function connect(): mysqli
+    public function connect()
     {
         $this->conn = new mysqli($this->host, $this->username, $this->password, $this->dbName);
         if ($this->conn->connect_error) {
@@ -29,4 +29,4 @@ class Database
 
 $db = new Database("localhost", "tul_wa", "root", "");
 
-$db->connect();
+$conn = $db->connect();

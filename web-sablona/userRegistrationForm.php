@@ -36,7 +36,7 @@ print_r($_POST);
 
                                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
-                                    <form class="mx-1 mx-md-4" method="POST">
+                                    <form class="mx-1 mx-md-4" method="POST" action="userRegistrationSaveToDb.php">
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
@@ -142,7 +142,7 @@ print_r($_POST);
     // write a script that pre-fills the form with valid data
     document.getElementById('first_name').value = 'John';
     document.getElementById('last_name').value = 'Doe';
-    document.getElementById('nickname').value = 'prdelnik';
+    document.getElementById('nickname').value = 'johndoex;';
     document.getElementById('email').value = 'vladimir.doskar@tul.cz';
     document.getElementById('pass1').value = 'Password1';
     document.getElementById('pass2').value = 'Password1';
@@ -151,33 +151,14 @@ print_r($_POST);
 </script>
 <script>
     document.querySelector("form").onsubmit = function (event) {
-        event.preventDefault();
 
-        const firstName = document.getElementById('first_name').value;
-        const lastName = document.getElementById('last_name').value;
-        const nickname = document.getElementById('nickname').value;
-        const email = document.getElementById('email').value;
         const pass1 = document.getElementById("pass1").value;
         const pass2 = document.getElementById("pass2").value;
-        const message = document.getElementById('message').value;
 
         if (pass1 !== pass2) {
             alert("Hesla se neshodují");
             return;
         }
-
-        const data = {
-            email: email,
-            first_name: firstName,
-            last_name: lastName,
-            message: message
-        };
-
-        const queryString = Object.keys(data).map(function (key) {
-            return encodeURIComponent(key) + '=' + encodeURIComponent(data[key]);
-        }).join('&');
-
-        window.location = 'form-view.php?' + queryString;
     };
 </script>
 </body>
