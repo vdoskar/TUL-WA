@@ -14,21 +14,20 @@ class User
 
     public function registerUser($firstName, $lastName, $nickname, $email, $password)
     {
-        $sql = "
-            INSERT INTO users (first_name, last_name, nickname, email, password, is_admin) 
-            VALUES (?, ?, ?, ?, ?, 0)
-        ";
+        try {
+            $sql = "
+                INSERT INTO users (first_name, last_name, nickname, email, password, is_admin) 
+                VALUES (?, ?, ?, ?, ?, 0)
+            ";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("sssss", $firstName, $lastName, $nickname, $email, $password);
+            $stmt->execute();
 
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("sssss", $firstName, $lastName, $nickname, $email, $password);
-
-        echo "<br>";
-        print_r($stmt);
-        echo "<br>";
-        print_r($stmt->error_list);
-        return;
-
-        return $stmt->execute();
+            return true;
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
     }
 }
 
@@ -39,11 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lastName = htmlspecialchars($_POST["last_name"]);
     $nickname = htmlspecialchars($_POST["nickname"]);
     $email = htmlspecialchars($_POST["email"]);
-    $password = password_hash($_POST["pass1"], PASSWORD_DEFAULT);
-
-    print_r($_POST);
-    $user->registerUser($firstName, $lastName, $nickname, $email, $password);
-    return;
+    $password = hash("sha256", $_POST["pass1"]);
 
     if ($user->registerUser($firstName, $lastName, $nickname, $email, $password)) {
         $registrationMessage = "Registrace proběhla úspěšně";
@@ -57,7 +52,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include_once("include/head.php"); ?>
+    <?php
+    include_once("include/head.php"); ?>
 </head>
 <body>
 <!-- Responsive navbar-->

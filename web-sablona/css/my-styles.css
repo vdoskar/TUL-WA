@@ -63,3 +63,11 @@
 	margin: 0 auto;
 	min-height: 100vh;
 }
+
+.nav-link {
+	color: #dfdfdf;
+}
+
+.container {
+	margin-top: 1rem;
+}

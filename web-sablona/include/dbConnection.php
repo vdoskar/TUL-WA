@@ -25,6 +25,11 @@ class Database
 
         return $this->conn;
     }
+
+    public function getConnection()
+    {
+        return $this->conn;
+    }
 }
 
 $db = new Database("localhost", "tul_wa", "root", "");

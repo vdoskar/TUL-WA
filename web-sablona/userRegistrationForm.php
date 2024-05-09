@@ -8,18 +8,12 @@
 <body>
 <!-- Responsive navbar-->
 <?php
-$navPath = __DIR__ . "/include/navigation.php";
-if (is_readable($navPath)) {
-    include $navPath;
-} else {
-    echo "Navigace není dostupná";
-}
-?>
-
-<?php
-
-print_r($_POST);
-
+    $navPath = __DIR__ . "/include/navigation.php";
+    if (is_readable($navPath)) {
+        include $navPath;
+    } else {
+        echo "Navigace není dostupná";
+    }
 ?>
 
 <!-- Page Content-->
@@ -41,7 +35,8 @@ print_r($_POST);
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                                                <input type="text" id="first_name" name="first_name" class="form-control"
+                                                <input type="text" id="first_name" name="first_name"
+                                                       class="form-control"
                                                        required/>
                                                 <label class="form-label" for="first_name">Your First Name</label>
                                             </div>
@@ -98,14 +93,6 @@ print_r($_POST);
                                             </div>
                                         </div>
 
-                                        <div class="d-flex flex-row align-items-center mb-4">
-                                            <i class="fas fa-key fa-lg me-3 fa-fw"></i>
-                                            <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                                                <textarea id="message" name="message" class="form-control"></textarea>
-                                                <label class="form-label" for="message">Message?</label>
-                                            </div>
-                                        </div>
-
                                         <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                             <button type="submit" data-mdb-button-init data-mdb-ripple-init
                                                     class="btn btn-primary btn-lg">Register
@@ -142,11 +129,10 @@ print_r($_POST);
     // write a script that pre-fills the form with valid data
     document.getElementById('first_name').value = 'John';
     document.getElementById('last_name').value = 'Doe';
-    document.getElementById('nickname').value = 'johndoex;';
+    document.getElementById('nickname').value = 'johndoex';
     document.getElementById('email').value = 'vladimir.doskar@tul.cz';
     document.getElementById('pass1').value = 'Password1';
     document.getElementById('pass2').value = 'Password1';
-    document.getElementById('message').value = 'Hello, World!';
 
 </script>
 <script>
