@@ -59,4 +59,18 @@ class BookManager
             return false;
         }
     }
+
+    public function getAllBooks()
+    {
+        $result = $this->db->getConnection()->query("SELECT * FROM books");
+        $books = [];
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $books[] = $row;
+            }
+        }
+
+        return $books;
+    }
 }

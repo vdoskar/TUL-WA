@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'isbn' => $_POST['isbn'],
         'year' => $_POST['year'],
         'pages' => $_POST['pages'],
-        'recommendation' => $_POST['recommendation'],
+        'recommendation' => implode(', ', $_POST['recommendation']),
         'description' => $_POST['description'],
         'image_url' => $_POST['image_url'],
     ];
@@ -88,9 +88,9 @@ if (file_exists($navPath) && is_readable($navPath)) {
             <label for="sub_category" class="form-label">Podkategorie:</label>
             <select name="sub_category" id="sub_category" class="form-select">
                 <option value=""></option>
-                <option value="beletrie">Beletrie</option>
-                <option value="odborna">Odborná</option>
-                <option value="detska">Dětská</option>
+                <option value="Beletrie">Beletrie</option>
+                <option value="Odborná literatura">Odborná</option>
+                <option value="Dětská pohádka">Dětská</option>
             </select>
         </div>
         <div class="mb-3">
@@ -119,7 +119,15 @@ if (file_exists($navPath) && is_readable($navPath)) {
         </div>
         <div class="mb-3">
             <label for="recommendation" class="form-label">Doporučení:</label>
-            <input type="text" class="form-control" id="recommendation" name="recommendation">
+            <br>
+            <input type="checkbox" name="recommendation[]" value="Studenti" id="recommendation1">
+            <label for="recommendation1">Studenti</label>
+            <br>
+            <input type="checkbox" name="recommendation[]" value="Hobíci" id="recommendation2">
+            <label for="recommendation2">Hobíci</label>
+            <br>
+            <input type="checkbox" name="recommendation[]" value="Profesionálové" id="recommendation3">
+            <label for="recommendation3">Profesionálové</label>
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Popis:*</label>
@@ -129,6 +137,10 @@ if (file_exists($navPath) && is_readable($navPath)) {
             <label for="image_url" class="form-label">URL obrázku:</label>
             <input type="text" class="form-control" id="image_url" name="image_url">
         </div>
+<!--        <div class="mb-3">-->
+<!--            <label for="image_source" class="form-label">Obrázek:</label>-->
+<!--            <input type="file" id="image_source" name="image_source">-->
+<!--        </div>-->
         <button type="submit" class="btn btn-primary mb-3">Přidat knihu</button>
     </form>
 </div>
@@ -140,21 +152,6 @@ if (file_exists($navPath) && is_readable($navPath)) {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
-<script>
-    document.getElementById('title').value = 'Pán prstenů';
-    document.getElementById('authors').value = 'Autor 1, Autor 2';
-    document.getElementById('main_category').value = 'beletrie';
-    document.getElementById('sub_category').value = 'detska';
-    document.getElementById('price').value = '100';
-    document.getElementById('currency').value = 'CZK';
-    document.getElementById('isbn').value = '1234567890-6545';
-    document.getElementById('year').value = '2023';
-    document.getElementById('pages').value = '100';
-    document.getElementById('recommendation').value = 'nevim';
-    document.getElementById('description').value = 'nevim';
-    document.getElementById('image_url').value = 'https://fastly.picsum.photos/id/8/901/400.jpg?hmac=0ejkIRW231YVgxw02tfRQU8aKK4ohVtFJKC1YiXCsiI';
-</script>
-
 <script>
     document.querySelector('form').onsubmit = function(event) {
         const price = document.getElementById('price').value;
