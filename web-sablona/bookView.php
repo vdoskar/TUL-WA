@@ -44,6 +44,7 @@ if (empty($_SESSION['user_nickname'])) {
                     <th>Počet stran</th>
                     <th>Doporučeno od</th>
                     <th>Obrázek</th>
+                    <th>Akce</th>
                 </tr>
             </thead>
             <tbody>
@@ -67,6 +68,7 @@ if (empty($_SESSION['user_nickname'])) {
                     echo '<td>' . htmlspecialchars($book['pages']) . '</td>';
                     echo '<td>' . htmlspecialchars($book['recommendation']) . '</td>';
                     echo '<td><img src="' . $book['image_url'] . '" alt="obrázek knihy" width="100"></td>';
+                    echo '<td><a class="btn btn-primary" href="bookEditForm.php?book_id=' . $book['book_id'] . '">Upravit</a></td>';
                     echo '</tr>';
                 }
                 ?>

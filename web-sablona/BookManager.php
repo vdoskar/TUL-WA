@@ -14,6 +14,10 @@ class BookManager
     public function save($bookData)
     {
         try {
+            if (!empty($bookData["book_id"])) {
+                $bookData["book_id"] = $this->db->getConnection()->real_escape_string($bookData["book_id"]);
+            }
+
             $bookData['title'] = $this->db->getConnection()->real_escape_string($bookData['title']);
             $bookData['authors'] = $this->db->getConnection()->real_escape_string($bookData['authors']);
             $bookData['main_category'] = $this->db->getConnection()->real_escape_string($bookData['main_category']);
@@ -28,12 +32,32 @@ class BookManager
             $bookData['image_url'] = $this->db->getConnection()->real_escape_string($bookData['image_url']);
 
             // prepare sql query with params and then statement bind
-            $query = "
-                INSERT INTO books 
-                    (title, authors, main_category, sub_category, price, currency, isbn, year, pages, recommendation, description, image_url) 
-                VALUES 
-                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ";
+            if (!empty($bookData["book_id"])) {
+                $query = "
+                    UPDATE books 
+                    SET 
+                        title = ?, 
+                        authors = ?, 
+                        main_category = ?, 
+                        sub_category = ?, 
+                        price = ?, 
+                        currency = ?, 
+                        isbn = ?, 
+                        year = ?, 
+                        pages = ?, 
+                        recommendation = ?, 
+                        description = ?, 
+                        image_url = ?
+                    WHERE 
+                        book_id = '" . $bookData["book_id"] . "'";
+            } else {
+                $query = "
+                    INSERT INTO books 
+                        (title, authors, main_category, sub_category, price, currency, isbn, year, pages, recommendation, description, image_url) 
+                    VALUES 
+                        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ";
+            }
 
             $stmt = $this->db->getConnection()->prepare($query);
             $stmt->bind_param(
@@ -72,5 +96,17 @@ class BookManager
         }
 
         return $books;
+    }
+
+    public function getBook(int $book_id)
+    {
+        $book_id = $this->db->getConnection()->real_escape_string($book_id);
+        $result = $this->db->getConnection()->query("SELECT * FROM books WHERE book_id = '$book_id'");
+
+        if ($result->num_rows == 1) {
+            return $result->fetch_assoc();
+        } else {
+            return null;
+        }
     }
 }
