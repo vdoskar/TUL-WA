@@ -14,14 +14,14 @@
 	<h1>Sekce 1</h1>
 	<br>
 	<ul>
-		<li><a href="index.html">Sekce 1</a></li>
-		<li><a href="index2.html">Sekce 2</a></li>
-		<li><a href="index3.html">Sekce 3</a></li>
-		<li><a href="index4.html">Sekce 4</a></li>
-		<li><a href="index5.html">Sekce 5</a></li>
+		<li><a href="index.php">Sekce 1</a></li>
+		<li><a href="index2.php">Sekce 2</a></li>
+		<li><a href="index3.php">Sekce 3</a></li>
+		<li><a href="index4.php">Sekce 4</a></li>
+		<li><a href="index5.php">Sekce 5</a></li>
 	</ul>
 	<br>
-	<p><a href="web-sablona/index.html">BOOTSTRAP ŠABLONA</a></p>
+	<p><a href="web-sablona/index.php">BOOTSTRAP ŠABLONA</a></p>
 	<p>amet consectetur adipisicing elit. Et ratione ut fuga, reiciendis unde, dicta ad atque sequi, fugit optio nisi
 		minima explicabo eveniet error libero natus rerum perferendis ullam ea quam odio? Recusandae, laboriosam
 		officiis, a eius, ratione debitis officia voluptatibus quis cupiditate assumenda repudiandae molestiae ducimus!

@@ -2,50 +2,23 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<meta name="description" content="" />
-	<meta name="author" content="" />
-	<title>Small Business - Start Bootstrap Template</title>
-
-	<!-- Favicon-->
-	<link rel="icon" type="image/x-icon" href="assets/icon.svg" />
-
-	<!-- Core theme CSS (includes Bootstrap)-->
-	<link href="css/styles.css" rel="stylesheet" />
-	<link rel="stylesheet" href="css/my-styles.css">
-	<link rel="stylesheet" href="css/fonts.css">
-
-	<!-- Google Fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Honk&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-		rel="stylesheet">
+    <?php include_once("include/head.php");?>
 </head>
 
 <body>
 	<!-- Responsive navbar-->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container px-5">
-			<a class="navbar-brand" href="#!">Start Bootstrap</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-					<li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-					<li class="nav-item"><a class="nav-link" href="#!">Services</a></li>
-					<li class="nav-item"><a class="nav-link" href="formular.html">Formulář</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+    <?php
+        $navPath = __DIR__ . "/include/navigation.php";
+        if (is_readable($navPath)) {
+            include $navPath;
+        } else {
+            echo "Navigace není dostupná";
+        }
+    ?>
+
 	<!-- Page Content-->
 	<h1 class="honk-honk text-center mt-5">HONK HONK</h1>
-	<div class="container px-4 px-lg-5">
+	<div class="container px-4 px-lg-5" id="main">
 		<!-- Heading Row-->
 		<div class="row gx-4 gx-lg-5 align-items-center my-5">
 			<div class="col-lg-7">
@@ -53,13 +26,13 @@
 				<div id="carouselExampleFade" class="carousel slide carousel-fade">
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<img src="https://picsum.photos/901/400" class="d-block w-100" alt="...">
+							<img src="https://picsum.photos/901/400" class="d-block w-100" alt="imidž">
 						</div>
 						<div class="carousel-item">
-							<img src="https://picsum.photos/902/400" class="d-block w-100" alt="...">
+							<img src="https://picsum.photos/902/400" class="d-block w-100" alt="imidž">
 						</div>
 						<div class="carousel-item">
-							<img src="https://picsum.photos/903/400" class="d-block w-100" alt="...">
+							<img src="https://picsum.photos/903/400" class="d-block w-100" alt="imidž">
 						</div>
 					</div>
 					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
